@@ -54,7 +54,7 @@ jobs:
       - run:
           name: Deploy master to Heroku production
           command: |
-            git push https://heroku:fb23d126-c8f1-437a-bd06-6260ba132024@git.heroku.com/msaoki-staging.git master
+            git push https://heroku:fb23d126-c8f1-437a-bd06-6260ba132024@git.heroku.com/msaoki-production.git master
           
 workflows:
   version: 2
