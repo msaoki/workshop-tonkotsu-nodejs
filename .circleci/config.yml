@@ -36,7 +36,7 @@ jobs:
       # run tests!
       - run: npm run test
       
-  deploy:
+  deploy-staging:
     docker:
       - image: buildpack-deps:trusty
     steps:
@@ -51,7 +51,7 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy:
+      - deploy-staging:
           requires:
             - build
           filters:
