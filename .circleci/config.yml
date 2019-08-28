@@ -51,14 +51,14 @@ jobs:
       - image: buildpack-deps:trusty
     steps:
       - checkout
-      - run:
-          name: Deploy master to Heroku production
-          command: |
-            git push https://heroku:fb23d126-c8f1-437a-bd06-6260ba132024@git.heroku.com/msaoki-production.git master
+      #- run:
+      #    name: Deploy master to Heroku production
+      #    command: |
+      #      git push https://heroku:fb23d126-c8f1-437a-bd06-6260ba132024@git.heroku.com/msaoki-production.git master
       - run:
           name: Create GitHub Deployment
           command: |
-            curl -X POST -H "Authorization:token a464c7dbb1935ddc05f695b62b51e75978371892" -H "Accept:application/vnd.github.ant-man-preview+json" -i https://api.github.com/repos/msaoki/workshop-tonkotsu-nodejs/deployments
+            curl -X POST -H "Authorization:token 9792bea0802e6b846609d6c2c03e94fd628207cb" -H "Accept:application/vnd.github.ant-man-preview+json" -i https://api.github.com/repos/msaoki/workshop-tonkotsu-nodejs/deployments
           
 workflows:
   version: 2
