@@ -35,3 +35,25 @@ jobs:
 
       # run tests!
       - run: npm run test
+      
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Feature to Heroku staging
+          command: |
+            git push https://heroku:fb23d126-c8f1-437a-bd06-6260ba132024@git.heroku.com/msaoki-staging.git master
+            
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
