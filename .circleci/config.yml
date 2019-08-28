@@ -58,8 +58,9 @@ jobs:
       - run:
           name: Create GitHub Deployment
           command: |
-            echo "curl -X POST -H "Authorization:token a464c7dbb1935ddc05f695b62b51e75978371892" -H "Accept:application/vnd.github.ant-man-preview+json" -d '{"ref":  "master", "environment": "production"}' -i https://api.github.com/repos/msaoki/workshop-tonkotsu-nodejs/deployments"
-          
+            GH_URL='https://api.github.com/repos/msaoki/workshop-tonkotsu-nodejs/deployments'
+            GH_RESPONSE=$(curl -H "Accept: application/vnd.github.ant-man-preview+json" -H "Authorization:token a464c7dbb1935ddc05f695b62b51e75978371892" -x --data '{"ref":  "master", "environment": "production"}' $GH_URL)
+            echo "GitHub API Status: $GH_RESPONSE"          
 workflows:
   version: 2
   build-deploy:
